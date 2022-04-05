@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>CookBook</title>
+</head>
+<body>
+    
+    
+    <div id="app">
+        
+        <header id="main-header">
+            <h1>CookBook</h1>
+            <h2>The ultimate recipe manager <br> <span>since 2022</span> </h2>
+            <p><input type="text" v-model="topic" placeholder="Search for a recipe"></p>
+            <button>{{topic}}</button></header>
+        </header>
+        Můj recept je: <strong>{{ topic }}</strong>
+        <form @submit.prevent="add">
+            <input type="text" v-model="newtopic" placeholder="Enter ingredient">
+        </form>
+        <ul>
+            <li v-for="ingredient in ingredients">{{ingredient}}</li>
+        </ul>
+        
+    </div>
+    
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                newtopic: "",
+                topic: "Moje nejlepší buchta je fakt dobrá",
+                ingredients: [
+                    "mléko",
+                    "cukr",
+                    "voda"
+                ]    
+
+            },
+            methods: {
+                add() {
+                    this.ingredients.push(
+                        this.newtopic
+                    )
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
