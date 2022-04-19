@@ -9,10 +9,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <h1> Ahoj </h1>
-      <CookBookList />  
-    </div>
+
+    <header id="main-header">
+        <h1>CookBook</h1>
+        <h2>The ultimate recipe manager <br /> <span>since 2022</span> </h2>
+        <p><input placeholder="Search for a recipe" /></p><button>FIND</button>
+        <CookBookList />
+    </header>
+    
+  
   )
 
 }

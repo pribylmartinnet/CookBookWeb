@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;1,400&display=swap');
+
+
 .App {
   text-align: center;
 }
@@ -40,3 +43,50 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#main-header {
+    text-align: center;
+}
+
+#main-header h1 {
+    font-weight: 600;
+}
+
+#main-header h2 {
+    font-weight: 400;
+}
+
+#main-header span {
+    font-weight: 200;
+}
+
+#main-header button {
+    padding: 15px 30px;
+    background-color: #63D2FF;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+#main-header input {
+    padding: 15px 30px;
+    background-color: #FFFFFF;
+    text-align: center;
+    
+    border-top: solid;
+    border-bottom: solid;
+    border-left: none;
+    border-right: none;
+
+    border-color: #CCCCCC;
+
+    
+    font-weight: 600;
+}
+
+

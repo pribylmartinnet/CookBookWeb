@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from "axios"
+import UploadAndDisplayImage from './UploadAndDisplayImage'
+
 
 
 export default function CookBookList () {
@@ -14,6 +16,7 @@ export default function CookBookList () {
                 description: ""
             }
             createTopic(topic)
+            //findTopic(topic)
             setBooks([...books, topic])
             setInput("")
         }
@@ -28,11 +31,11 @@ export default function CookBookList () {
             <div>
                 <h1>List of topics:</h1>
                 <input type="text" placeholder="Enter topic" onChange={(e) => setInput(e.target.value)} value={input} onKeyDown={handlerEnter} ></input>
-                <ol>
+                <div>
                     {books.length > 0 && books.map((book, idx) => {
-                        return <li key={idx}>{ book.topic }</li>
+                        return <div key={idx}><UploadAndDisplayImage topic={book.topic} />{ book.topic }</div>
                     })}
-                </ol>
+                </div>
             </div>
         )
 
@@ -54,3 +57,14 @@ async function createTopic(topic) {
         console.log(error);
       });
 } 
+
+async function findTopic(topic) {
+    axios.post('http://localhost:8080/topic/list', {
+        topic: "M"
+      })
+      .then((response) => {
+        console.log(response);
+      }, (error) => {
+        console.log(error);
+      });
+}
