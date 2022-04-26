@@ -4,6 +4,8 @@ import axios from "axios"
 const UploadAndDisplayImage = (props) => {
   const [selectedImage, setSelectedImage] = useState(null)
   const [topic, setTopic] = useState(props.topic)
+  const [id, setId] = useState(props.id)
+
 
   return (
     <div>
@@ -22,8 +24,7 @@ const UploadAndDisplayImage = (props) => {
         type="file"
         name="myImage"
         onChange={(event) => {
-          console.log(event.target.files[0]);
-          savePicture(event.target.files[0])
+          savePicture(id, URL.createObjectURL(event.target.files[0]))
           setSelectedImage(event.target.files[0]);
         }}
       />
@@ -31,8 +32,9 @@ const UploadAndDisplayImage = (props) => {
   );
 };
 
-async function savePicture(picture) {
+async function savePicture(id, picture) {
   axios.post('http://localhost:8080/topic/picture', {
+      id: id,
       picture: picture
     })
     .then((response) => {

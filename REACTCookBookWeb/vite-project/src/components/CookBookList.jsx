@@ -33,7 +33,7 @@ export default function CookBookList () {
                 <input type="text" placeholder="Enter topic" onChange={(e) => setInput(e.target.value)} value={input} onKeyDown={handlerEnter} ></input>
                 <div>
                     {books.length > 0 && books.map((book, idx) => {
-                        return <div key={idx}><UploadAndDisplayImage topic={book.topic} />{ book.topic }</div>
+                        return <div key={idx}><UploadAndDisplayImage topic={book.topic} id={book._id} />{ book.topic }</div>
                     })}
                 </div>
             </div>
