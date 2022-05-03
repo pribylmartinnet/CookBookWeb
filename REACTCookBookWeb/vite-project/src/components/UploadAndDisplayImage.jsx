@@ -1,48 +1,82 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-const UploadAndDisplayImage = (props) => {
-  const [selectedImage, setSelectedImage] = useState(null)
+  const UploadAndDisplayImage = (props) => {
   const [topic, setTopic] = useState(props.topic)
   const [id, setId] = useState(props.id)
-
+  const [selectedImage, setSelectedImage] = useState(null)
+  
+  useEffect(async()=> {
+      const picture = await getPicture(id)  
+      setSelectedImage(picture)
+  }, [])
 
   return (
     <div>
-      <h1>{topic}</h1>
       {selectedImage && (
         <div>
-        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+        <button onClick={()=>deletePicture(id, setSelectedImage)}>Remove</button>
         <br />
-        <button onClick={()=>setSelectedImage(null)}>Remove</button>
+        <img alt="img" width={"250px"} src={selectedImage} />
         </div>
       )}
       <br />
      
       <br /> 
-      <input
-        type="file"
-        name="myImage"
-        onChange={(event) => {
-          savePicture(id, URL.createObjectURL(event.target.files[0]))
-          setSelectedImage(event.target.files[0]);
-        }}
-      />
-    </div>
-  );
-};
+      {!selectedImage && ( 
+        <input
+          type="file"
+          name="myImage"
+          onChange={(event) => {savePicture(id, event.target.files[0], setSelectedImage)}
+          }
+        />
+      )}
 
-async function savePicture(id, picture) {
-  axios.post('http://localhost:8080/topic/picture', {
+    </div>
+
+  )
+}
+
+
+function savePicture(id, file, stateFunc) {
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () { 
+    axios.post('http://localhost:8080/topic/picture', {
       id: id,
-      picture: picture
+      picture: reader.result
     })
     .then((response) => {
-      console.log(response);
+      console.log(reader.result)
+      stateFunc(reader.result)
     }, (error) => {
       console.log(error);
-    });
-} 
+    })
+    
+  }
+  reader.onerror = function (error) {
+    console.log('Error: ', error);
+  }
+}
+
+function deletePicture(id, stateFunc) {
+  axios.delete('http://localhost:8080/topic/picture/' + id)
+    .then((response) => {
+      stateFunc(null)
+      console.log(response)
+    }, (error) => {
+      console.log(error);
+    })
+  
+
+}
+
+async function getPicture(id) {
+  const data = await axios.get('http://localhost:8080/topic/picture/' + id)
+  console.log(data.data)
+  return data.data
+  
+}
 
 
 export default UploadAndDisplayImage;
