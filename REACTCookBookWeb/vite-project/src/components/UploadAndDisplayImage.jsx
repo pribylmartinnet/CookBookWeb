@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 
   const UploadAndDisplayImage = (props) => {
+  const [selectedImage, setSelectedImage] = useState(null)
   const [topic, setTopic] = useState(props.topic)
   const [id, setId] = useState(props.id)
   
