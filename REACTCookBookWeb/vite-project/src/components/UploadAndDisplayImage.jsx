@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-const UploadAndDisplayImage = (props) => {
-  const [selectedImage, setSelectedImage] = useState(null)
+  const UploadAndDisplayImage = (props) => {
   const [topic, setTopic] = useState(props.topic)
   const [id, setId] = useState(props.id)
   
@@ -29,8 +28,8 @@ const UploadAndDisplayImage = (props) => {
         }/>
       )}
     </div>
-  );
-};
+  )
+}
 
 async function savePicture(id, file, stateFunc) {
   const reader = new FileReader()
