@@ -4,7 +4,7 @@ export default function Pages () {
 
   return (
     <div>
-      <button onClick={(e) => nextPage()}>Delete Row</button>
+      <button onClick={(e) => nextPage()}>Next</button>
     </div>
   )
 }
