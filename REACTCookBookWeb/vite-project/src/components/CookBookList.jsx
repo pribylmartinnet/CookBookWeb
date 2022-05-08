@@ -40,7 +40,7 @@ export default function CookBookList () {
                 </div>
                 
                 <div>
-                    <button onClick={(e) => nextPage(books.length)}>Next</button>
+                    <button onClick={(e) => nextPage(books.length,setBooks,books)}>Next</button>
                     
 
                 </div>
@@ -49,9 +49,10 @@ export default function CookBookList () {
 
 }
 
-function nextPage(bookCount)
+async function nextPage(bookCount,setFnc,books)
 {
-  alert(bookCount)
+    const data = await axios.get('http://localhost:8080/topic/list/'+bookCount)
+    setFnc([...books,...data.data])
 }
 
 async function getTopics() {
