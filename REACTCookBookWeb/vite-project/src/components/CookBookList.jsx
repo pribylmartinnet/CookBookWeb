@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from "axios"
 import UploadAndDisplayImage from './UploadAndDisplayImage'
+import Pages from './Pages'
 
 
 
@@ -23,8 +24,8 @@ export default function CookBookList () {
     }
     
     useEffect( async() => {
-        const apiData = await apiSearch()
-        setBooks(apiData)
+        const topics = await getTopics()
+        setBooks(topics)
     }, [])
     
     return (
@@ -36,12 +37,15 @@ export default function CookBookList () {
                         return <div key={idx}><UploadAndDisplayImage topic={book.topic} id={book._id} />{ book.topic }</div>
                     })}
                 </div>
+                <div>
+                    <Pages></Pages>
+                </div>
             </div>
         )
 
 }
 
-async function apiSearch() {
+async function getTopics() {
     const data = await axios.get('http://localhost:8080/topic/list')
     return data.data
 } 
