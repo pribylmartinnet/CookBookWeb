@@ -5,7 +5,7 @@ export default function Pages (props) {
 
   return (
     <div>
-      <button onClick={(e) => nextPage()}>Delete Row</button>
+      <button onClick={(e) => nextPage()}>Next</button>
     </div>
   )
 }
