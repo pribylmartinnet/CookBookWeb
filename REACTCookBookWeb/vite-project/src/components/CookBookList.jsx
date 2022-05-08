@@ -38,7 +38,7 @@ export default function CookBookList () {
                     })}
                 </div>
                 <div>
-                    <Pages></Pages>
+                    <Pages bookCount={books.length}/>
                 </div>
             </div>
         )

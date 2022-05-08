@@ -1,6 +1,7 @@
 import React from "react"
 
-export default function Pages () {
+export default function Pages (props) {
+    const [bookCount,setBookCount] = useState(props.bookCount)
 
   return (
     <div>
@@ -9,9 +10,8 @@ export default function Pages () {
   )
 }
 
-
 function nextPage()
 {
-  alert("Cau buchto !")
+  alert(bookCount)
 }
 
