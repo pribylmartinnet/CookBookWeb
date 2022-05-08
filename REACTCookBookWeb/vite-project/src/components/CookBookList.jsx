@@ -36,13 +36,22 @@ export default function CookBookList () {
                     {books.length > 0 && books.map((book, idx) => {
                         return <div key={idx}><UploadAndDisplayImage topic={book.topic} id={book._id} />{ book.topic }</div>
                     })}
+                    
                 </div>
+                
                 <div>
-                    <Pages bookCount={books.length}/>
+                    <button onClick={(e) => nextPage(books.length)}>Next</button>
+                    
+
                 </div>
             </div>
         )
 
+}
+
+function nextPage(bookCount)
+{
+  alert(bookCount)
 }
 
 async function getTopics() {
