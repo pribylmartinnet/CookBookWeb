@@ -41,8 +41,6 @@ export default function CookBookList () {
                 
                 <div>
                     <button onClick={(e) => nextPage(books.length,setBooks,books)}>Next</button>
-                    
-
                 </div>
             </div>
         )
