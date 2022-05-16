@@ -1,0 +1,28 @@
+
+#content{
+    width: 75%;
+    height: fit-content;
+    border-width: 2px;
+    border-color: #cccccc;
+    border-style: solid;
+    margin: auto;
+    margin-bottom: 5px;
+    justify-content: center;
+}
+#grid{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+}
+#img{
+    overflow: hidden;
+}
+#description{
+    overflow: hidden;
+    justify-content: center;
+    display: block;
+    margin: 1px 1px;
+}
+#text{
+    text-align: left;
+    justify-self: center;
+}

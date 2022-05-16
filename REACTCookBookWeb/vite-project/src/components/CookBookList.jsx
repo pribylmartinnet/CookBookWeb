@@ -2,14 +2,14 @@ import {useEffect, useState} from 'react'
 import axios from "axios"
 import UploadAndDisplayImage from './UploadAndDisplayImage'
 import Pages from './Pages'
-
+import './CookBookList.css'
 
 
 export default function CookBookList () {
 
     const [books, setBooks] = useState([])
     const [input, setInput] = useState("")
-    
+
     const handlerEnter = (e) => {
         if(e.key === "Enter" ) {
             let topic = {
@@ -34,7 +34,19 @@ export default function CookBookList () {
                 <input type="text" placeholder="Enter topic" onChange={(e) => setInput(e.target.value)} value={input} onKeyDown={handlerEnter} ></input>
                 <div>
                     {books.length > 0 && books.map((book, idx) => {
-                        return <div key={idx}><UploadAndDisplayImage topic={book.topic} id={book._id} />{ book.topic }</div>
+                        return (
+                        <div key={idx} id="content">                                                         
+                            <div>{ book.topic }</div>
+                            <div id="grid">
+                                <div id="img">
+                                    <UploadAndDisplayImage  topic={book.topic} idTopic={book._id} />
+                                </div>
+                                <div id="description">
+                                    <div id="text">{book.description}</div>
+                                </div>
+                            </div>
+                        </div>
+                        )
                     })}
                     
                 </div>

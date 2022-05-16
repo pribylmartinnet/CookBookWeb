@@ -4,7 +4,7 @@ import axios from "axios"
   const UploadAndDisplayImage = (props) => {
   const [selectedImage, setSelectedImage] = useState(null)
   const [topic, setTopic] = useState(props.topic)
-  const [id, setId] = useState(props.id)
+  const [id, setId] = useState(props.idTopic)
   
   useEffect(async()=>{
     
