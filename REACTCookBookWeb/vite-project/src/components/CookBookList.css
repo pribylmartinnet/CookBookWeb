@@ -9,10 +9,10 @@
     margin-bottom: 5px;
     justify-content: center;
 }
-#grid{
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-}
+/*#grid{*/
+/*    display: grid; */
+/*    grid-template-columns: 1fr 1fr; */
+/*}*/
 #img{
     overflow: hidden;
 }
@@ -25,4 +25,11 @@
 #text{
     text-align: left;
     justify-self: center;
+}
+
+#picture-input {
+    border: none !important;
+    padding: 20px !important;
+    text-align: center !important;
+    cursor: pointer !important;
 }

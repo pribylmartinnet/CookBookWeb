@@ -11,9 +11,8 @@ function App() {
   return (
 
     <header id="main-header">
-        <h1>CookBook</h1>
-        <h2>The ultimate recipe manager <br /> <span>since 2022</span> </h2>
-        <p><input placeholder="Search for a recipe" /></p><button>FIND</button>
+        <h1>PictureBook</h1>
+        <h2>The ultimate picture manager <br /> <span>since 2023</span> </h2>
         <CookBookList />
     </header>
     

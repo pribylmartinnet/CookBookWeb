@@ -22,7 +22,7 @@ import axios from "axios"
       )}
       <br /> 
       { !selectedImage && (
-        <input
+        <input id="picture-input"
           type="file"
           name="myImage"
           onChange={(event) => {savePicture(id, event.target.files[0], setSelectedImage )}    

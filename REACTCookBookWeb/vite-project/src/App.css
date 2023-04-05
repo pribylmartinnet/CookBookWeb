@@ -66,11 +66,13 @@ button {
 }
 
 #main-header button {
-    padding: 15px 30px;
-    background-color: #63D2FF;
+    padding: 10px 15px;
+    background-color: #000000;
     border: none;
-    border-radius: 15px;
-    font-weight: 600;
+    border-radius:12px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 #main-header input {

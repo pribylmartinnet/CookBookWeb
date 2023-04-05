@@ -12,15 +12,21 @@ export default function CookBookList () {
 
     const handlerEnter = (e) => {
         if(e.key === "Enter" ) {
-            let topic = {
-                topic: input,
-                description: ""
-            }
-            createTopic(topic)
-            //findTopic(topic)
+            addTopic()
             setBooks([...books, topic])
             setInput("")
         }
+    }
+
+    const addTopic = () => {
+        let topic = {
+            topic: input,
+            description: ""
+        }
+        createTopic(topic)
+        //findTopic(topic)
+        setBooks([...books, topic])
+        setInput("")
     }
     
     useEffect( async() => {
@@ -30,8 +36,11 @@ export default function CookBookList () {
     
     return (
             <div>
-                <h1>List of topics:</h1>
-                <input type="text" placeholder="Enter topic" onChange={(e) => setInput(e.target.value)} value={input} onKeyDown={handlerEnter} ></input>
+                <h1>Add picture</h1>
+                <input type="text" placeholder="Enter picture name" onChange={(e) => setInput(e.target.value)} value={input} onKeyDown={handlerEnter} ></input>
+                <button onClick={(e) => addTopic()}>Add</button>
+
+                <h1>List of pictures:</h1>
                 <div>
                     {books.length > 0 && books.map((book, idx) => {
                         return (
@@ -41,9 +50,9 @@ export default function CookBookList () {
                                 <div id="img">
                                     <UploadAndDisplayImage  topic={book.topic} idTopic={book._id} />
                                 </div>
-                                <div id="description">
-                                    <div id="text">{book.description}</div>
-                                </div>
+                                {/*<div id="description">*/}
+                                {/*    <div id="text">{book.description}</div>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                         )
@@ -51,9 +60,9 @@ export default function CookBookList () {
                     
                 </div>
                 
-                <div>
-                    <button onClick={(e) => nextPage(books.length,setBooks,books)}>Next</button>
-                </div>
+                {/*<div>*/}
+                {/*    <button onClick={(e) => nextPage(books.length,setBooks,books)}>Next</button>*/}
+                {/*</div>*/}
             </div>
         )
 
